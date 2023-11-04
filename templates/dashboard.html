@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Number Occurrences Chart</title>
+  </head>
+  <body>
+    <canvas id="intensity" width="400" height="400"></canvas>
+    <canvas id="Likelihood" width="400" height="400"></canvas>
+    <canvas id="Relevance" width="400" height="400"></canvas>
+    <canvas id="Year" width="400" height="400"></canvas>
+    <canvas id="Country" width="400" height="400"></canvas>
+    <canvas id="Topics" width="400" height="400"></canvas>
+    <canvas id="Region" width="400" height="400"></canvas>
+    <canvas id="City" width="400" height="400"></canvas>
+    {{string_numbers_unique_numbers_Likelihood_counts}}
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+     const ctx = document.getElementById("intensity");
+     const string_numbers_unique_numbers_intensities_counts = {{ string_numbers_unique_numbers_intensities_counts | safe }};
+     const count_of_numbers_intensities_counts = {{ count_of_numbers_intensities_counts | safe }};
+
+     new Chart(ctx, {
+         type: "bar",
+         data: {
+             labels: string_numbers_unique_numbers_intensities_counts,
+             datasets: [{
+                 label: "# of Votes",
+                 data: count_of_numbers_intensities_counts,
+                 borderWidth: 1,
+             }],
+         },
+         options: {
+             scales: {
+                 y: {
+                     beginAtZero: true,
+                 },
+             },
+         },
+     });
+
+    const ctx2 = document.getElementById("Likelihood");
+     const string_numbers_unique_numbers_Likelihood_counts = {{ string_numbers_unique_numbers_Likelihood_counts | safe }};
+     const count_of_numbers_Likelihood_counts = {{ count_of_numbers_Likelihood_counts | safe }};
+
+     new Chart(ctx2, {
+         type: "bar",
+         data: {
+             labels: string_numbers_unique_numbers_Likelihood_counts,
+             datasets: [{
+                 label: "# of Votes",
+                 data: count_of_numbers_Likelihood_counts,
+                 borderWidth: 1,
+             }],
+         },
+         options: {
+             scales: {
+                 y: {
+                     beginAtZero: true,
+                 },
+             },
+         },
+     });
+  </script>
+</html>
